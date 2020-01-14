@@ -6,6 +6,7 @@ use App\HomeMenu;
 use App\Link;
 use App\Project;
 use App\Slider;
+use App\SubMenuHome;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 
@@ -22,12 +23,19 @@ class HomeController extends Controller
 
         $project = Project::all(); //  where('status', 1)->get();
         $links = [];
-        $menu = HomeMenu::all();
+        $menu = [];
         $slider = Slider::all();
 
         foreach (Link::all() as $item) {
             $links[$item->title] = $item->url;
         }
+
+        foreach (HomeMenu::all() as $item) {
+            $item->subMenu = SubMenuHome::where('menu_id', $item->id)->get();
+            $menu[] = $item;
+        }
+
+
 
         return view('index', compact('project', 'links', 'menu', 'slider'));
 

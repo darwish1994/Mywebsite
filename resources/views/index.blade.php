@@ -84,23 +84,59 @@
                                     <div class="main-menu  d-none d-lg-block">
                                         <nav>
                                             <ul id="navigation">
-                                                <li><a class="active" href="index.html">home</a></li>
-                                                <li><a href="about.html">About</a></li>
-                                                <li><a href="service.html">Services</a></li>
-                                                <li><a href="#">blog <i class="ti-angle-down"></i></a>
-                                                    <ul class="submenu">
-                                                        <li><a href="blog.html">blog</a></li>
-                                                        <li><a href="single-blog.html">single-blog</a></li>
-                                                    </ul>
-                                                </li>
-                                                <li><a href="#">pages <i class="ti-angle-down"></i></a>
-                                                    <ul class="submenu">
-                                                        <li><a href="elements.html">elements</a></li>
-                                                        <li><a href="Portfolio.html">Portfolio</a></li>
-                                                        <li><a href="portfolio_details.html">Portfolio details</a></li>
-                                                    </ul>
-                                                </li>
-                                                <li><a href="contact.html">Contact</a></li>
+                                                {{--                                                @dd($menu)--}}
+                                                @isset($menu)
+
+                                                    @if(count((Array)$menu) > 0)
+
+                                                        @foreach($menu as $item)
+                                                            <li><a class="active"
+                                                                   href="{{url($item->url)}}">{{$item->title}}
+
+                                                                    @isset($item->subMenu)
+                                                                        @if(count($item->subMenu)> 0)
+                                                                            <i class="ti-angle-down"></i>
+                                                                        @endif
+                                                                    @endisset
+                                                                </a>
+                                                                @isset($item->subMenu)
+
+                                                                    @if(count($item->subMenu)>0)
+                                                                        <ul class="submenu">
+                                                                            @foreach($item->subMenu as $sub)
+                                                                                <li><a href="">{{$sub->title}}</a></li>
+
+                                                                            @endforeach
+
+                                                                        </ul>
+
+                                                                    @endif
+                                                                @endisset
+
+                                                            </li>
+                                                        @endforeach
+
+                                                    @endif
+                                                @endisset
+
+
+                                                {{--                                                <li><a class="active" href="{{url('index')}}">home</a></li>--}}
+                                                {{--                                                <li><a href="about.html">About</a></li>--}}
+                                                {{--                                                <li><a href="service.html">Services</a></li>--}}
+                                                {{--                                                <li><a href="#">blog <i class="ti-angle-down"></i></a>--}}
+                                                {{--                                                    <ul class="submenu">--}}
+                                                {{--                                                        <li><a href="blog.html">blog</a></li>--}}
+                                                {{--                                                        <li><a href="single-blog.html">single-blog</a></li>--}}
+                                                {{--                                                    </ul>--}}
+                                                {{--                                                </li>--}}
+                                                {{--                                                <li><a href="#">pages <i class="ti-angle-down"></i></a>--}}
+                                                {{--                                                    <ul class="submenu">--}}
+                                                {{--                                                        <li><a href="elements.html">elements</a></li>--}}
+                                                {{--                                                        <li><a href="Portfolio.html">Portfolio</a></li>--}}
+                                                {{--                                                        <li><a href="portfolio_details.html">Portfolio details</a></li>--}}
+                                                {{--                                                    </ul>--}}
+                                                {{--                                                </li>--}}
+                                                {{--                                                <li><a href="contact.html">Contact</a></li>--}}
                                             </ul>
                                         </nav>
                                     </div>
@@ -165,65 +201,6 @@
         @endisset
 
 
-        {{--        <div class="single_slider  d-flex align-items-center slider_bg_2 overlay2">--}}
-        {{--            <div class="container">--}}
-        {{--                <div class="row">--}}
-        {{--                    <div class="col-xl-12">--}}
-        {{--                        <div class="slider_text ">--}}
-        {{--                            <h3> Ahmed Darwish <br>--}}
-        {{--                                Senior Android Developer </h3>--}}
-        {{--                            <p>Android software development is the process by which new applications are <br> created--}}
-        {{--                                for devices running the Android operating system.</p>--}}
-        {{--                            <div class="video_service_btn">--}}
-        {{--                                <a href="#" class="boxed-btn3">Our Projects</a>--}}
-
-        {{--                                --}}{{--                                <a href="#" class="boxed-btn3-white"> <i class="fa fa-play"></i>See How it Work</a>--}}
-
-        {{--                            </div>--}}
-        {{--                        </div>--}}
-        {{--                    </div>--}}
-        {{--                </div>--}}
-        {{--            </div>--}}
-        {{--        </div>--}}
-        {{--        <div class="single_slider  d-flex align-items-center slider_bg_1 overlay2">--}}
-        {{--            <div class="container">--}}
-        {{--                <div class="row">--}}
-        {{--                    <div class="col-xl-12">--}}
-        {{--                        <div class="slider_text ">--}}
-        {{--                            <h3> Grow Big with <br>--}}
-        {{--                                Musicol Business </h3>--}}
-        {{--                            <p>Nam libero tempore, cum soluta nobis est eligendi optio <br>--}}
-        {{--                                cumque nihil impedit quo minus.</p>--}}
-        {{--                            <div class="video_service_btn">--}}
-        {{--                                <a href="#" class="boxed-btn3">Our Services</a>--}}
-        {{--                                <a href="#" class="boxed-btn3-white"> <i class="fa fa-play"></i>--}}
-        {{--                                    See How it Work</a>--}}
-        {{--                            </div>--}}
-
-        {{--                        </div>--}}
-        {{--                    </div>--}}
-        {{--                </div>--}}
-        {{--            </div>--}}
-        {{--        </div>--}}
-        {{--        <div class="single_slider  d-flex align-items-center slider_bg_2 overlay2">--}}
-        {{--            <div class="container">--}}
-        {{--                <div class="row">--}}
-        {{--                    <div class="col-xl-12">--}}
-        {{--                        <div class="slider_text ">--}}
-        {{--                            <h3> Grow Big with <br>--}}
-        {{--                                Musicol Business </h3>--}}
-        {{--                            <p>Nam libero tempore, cum soluta nobis est eligendi optio <br>--}}
-        {{--                                cumque nihil impedit quo minus.</p>--}}
-        {{--                            <div class="video_service_btn">--}}
-        {{--                                <a href="#" class="boxed-btn3">Our Services</a>--}}
-        {{--                                <a href="#" class="boxed-btn3-white"> <i class="fa fa-play"></i>--}}
-        {{--                                    See How it Work</a>--}}
-        {{--                            </div>--}}
-        {{--                        </div>--}}
-        {{--                    </div>--}}
-        {{--                </div>--}}
-        {{--            </div>--}}
-        {{--        </div>--}}
     </div>
 </div>
 <!-- slider_area_end -->
